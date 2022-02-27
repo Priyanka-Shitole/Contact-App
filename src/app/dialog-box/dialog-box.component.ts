@@ -22,11 +22,13 @@ export class DialogBoxComponent {
 
   constructor(
     private toastr: ToastrService, public dialogRef: MatDialogRef<DialogBoxComponent>,
-    //@Optional() is used to prevent error if no data is passed
+    /**@Optional() is used to prevent error if no data is passed */
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Contacts, private formBuilder: FormBuilder) {
-    console.log(data);
     this.local_data = { ...data };
     this.action = this.local_data.action;
+    /**
+     * form field innitialization
+     */
     this.form = this.formBuilder.group({
       id: '',
       firstName: '',
@@ -38,7 +40,9 @@ export class DialogBoxComponent {
   }
   ngOnInit(): void {
   }
-
+  /**
+   * function call on dialog actions
+   */
   doAction() {
     if (this.form.valid) {
       this.dialogRef.close({ event: this.action, data: this.local_data });
@@ -51,10 +55,15 @@ export class DialogBoxComponent {
     }
 
   }
-
+  /**
+   * function call to close the dialogs
+   */
   closeDialog() {
     this.dialogRef.close({ event: 'Cancel' });
   }
+  /**
+   * function call after form submition
+   */
   submit() {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value);

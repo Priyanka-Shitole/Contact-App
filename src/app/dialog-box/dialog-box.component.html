@@ -1,13 +1,10 @@
 <h1 mat-dialog-title>Add Contact</h1>
 <div mat-dialog-content>
-    <!-- <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
-    <input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name">
-  </mat-form-field> -->
-
     <form [formGroup]="form" (ngSubmit)="submit()">
         <mat-tab-group #matgroup>
             <mat-tab label="Details">
                 <div class="tab-content">
+                    <!-- FirstName field -->
                     <div class="content-container tab-content-height">
                         <mat-form-field appearance="fill">
                             <mat-label>Enter your First Name</mat-label>
@@ -16,8 +13,8 @@
                         </mat-form-field>
 
                     </div>
+                    <!-- Last Name field -->
                     <div class="content-container tab-content-height">
-
                         <mat-form-field>
                             <mat-label>Enter your Last Name</mat-label>
                             <input matInput formControlName="lastName" onkeydown="return /[a-z]/i.test(event.key)"
@@ -25,14 +22,11 @@
                         </mat-form-field>
 
                     </div>
+                    <!-- Phone Number Field -->
                     <div class="content-container tab-content-height">
-
                         <mat-form-field>
                             <mat-label>Enter your 10 digit Phone</mat-label>
-                            <!-- <input matInput type="number" formControlName="phone" [(ngModel)]="local_data.phone"
-                                [maxLength]="10" required> -->
-
-                            <input matInput #phone maxlength="10" minlength="10" formControlName="phone"
+                            <input matInput type="number" #phone maxlength="10" minlength="10" formControlName="phone"
                                 [(ngModel)]="local_data.phone" required>
                             <mat-hint align="end">{{phone.value.length}} / 10</mat-hint>
                         </mat-form-field>
